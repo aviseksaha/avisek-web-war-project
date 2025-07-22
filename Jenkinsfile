@@ -1,4 +1,15 @@
 pipeline {
+	agent any
+	stages{
+		stage('stage-1') {
+			steps {
+				echo "Hello World !"
+			}
+		}
+	}
+}
+
+pipeline {
     agent any
 	
 	environment{
@@ -7,6 +18,11 @@ pipeline {
 	
 	
     stages {
+		stage('git clone') {
+			steps {
+				git url: 'https://github.com/aviseksaha/avisek-web-war-project.git', 'branch': 'main'
+			}
+		}
 		
 		stage('build') {
             steps {
